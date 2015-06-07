@@ -44,17 +44,29 @@ c0001
 
 	* The yaml file we sent will show up under here.
 	```
-	cat /var/lib/cloud/instance/cloud-config.txt 
+	less /var/lib/cloud/instance/cloud-config.txt 
 	```
 
 	* Runcmd arguments from the Yaml file will also show under scripts.
 	```
-	cat /var/lib/cloud/instance/scripts/runcmd  
+	less /var/lib/cloud/instance/scripts/runcmd  
 	```
 
 	* The status is also nicely provided.
 	```
-	cat /var/lib/cloud/data/status.json
+	less /var/lib/cloud/data/status.json
+	```
+
+	* Review logs
+	```
+	#If you have the example 1 output config
+	less /var/log/cloud-init-output.log 
+
+	#Ubuntu
+	less /var/log/cloud-init.log 
+
+	#CentOS
+	grep "CLOUDINIT" /var/log/messages
 	```
 
 
