@@ -20,39 +20,54 @@ c0001
 
  * A look under the hood 
 
-	* With the config drive
+	* With the config drive you should see a small 67MB~ disk
+	```
+	fdisk -l
 
-``` 
-# ls -l /var/lib/cloud/
-total 24
-drwxr-xr-x 2 root root 4096 Jun  7 11:41 data
-drwxr-xr-x 2 root root 4096 Jun  7 11:41 handlers
-drwxr-xr-x 3 root root 4096 Jun  7 11:41 instances
-drwxr-xr-x 5 root root 4096 Jun  7 11:41 scripts
-drwxr-xr-x 2 root root 4096 Jun  7 11:41 seed
-drwxr-xr-x 2 root root 4096 Jun  7 11:42 sem
+	Disk /dev/xvda: 21.5 GB, 21474836480 bytes
+	255 heads, 63 sectors/track, 2610 cylinders
+	Units = cylinders of 16065 * 512 = 8225280 bytes
+	Sector size (logical/physical): 512 bytes / 512 bytes
+	I/O size (minimum/optimal): 512 bytes / 512 bytes
+	Disk identifier: 0x00040be1
+
+	    Device Boot      Start         End      Blocks   Id  System
+	/dev/xvda1   *           1        2611    20970496   83  Linux
+
+	Disk /dev/xvdd: 67 MB, 67108864 bytes
+	255 heads, 63 sectors/track, 8 cylinders
+	Units = cylinders of 16065 * 512 = 8225280 bytes
+	Sector size (logical/physical): 512 bytes / 512 bytes
+	I/O size (minimum/optimal): 512 bytes / 512 bytes
+	Disk identifier: 0x00000000
+	```
+
+	* The yaml file we sent will show up under here.
+	```
+	cat /var/lib/cloud/instance/cloud-config.txt 
+	```
+
+	* Runcmd arguments from the Yaml file will also show under scripts.
+	```
+	cat /var/lib/cloud/instance/scripts/runcmd  
+	```
+
+	* The status is also nicely provided.
+	```
+	cat /var/lib/cloud/data/status.json
+	```
+
+
+ * Run example 2
 ```
-
-* Run example 2 on Rackspace Cloud, Ubuntu 12.04 LTS (PVHVM)
-
 key=sri-key
 nova boot --flavor=general1-1 \
---image=0d83aff5-9910-44aa-a721-1c6b28e3c9dc \
+--image=518d156d-d4e0-483d-a7db-89cd27b50180 \
 --key-name $key \
 --config-drive=true \
 --user-data=example2.yaml \
-c0002
-
-
-```
-key=sri-key
-nova boot --flavor=general1-1 \
---image=0d83aff5-9910-44aa-a721-1c6b28e3c9dc \
---key-name $key \
---config-drive=true \
---user-data=example2.yaml \
-c0002
+c0003
 ```
 
- * Other Examples; See example3.yaml & example4.yaml
+ * Other Examples; See [example 3](https://github.com/srirajan/cloudinit-demo/blob/master/example3.yaml) & [example 4](https://github.com/srirajan/cloudinit-demo/blob/master/example4.yaml)
 
