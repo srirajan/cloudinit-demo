@@ -1,0 +1,18 @@
+#cloud-config
+# Some other examples
+
+
+# Call an external URL
+phone_home:
+  url: http://www.tty0.me/cloud-init.php
+  post: all
+  tries: 3
+
+# Reboot after config
+power_state:
+ delay: "+2"
+ mode: reboot
+ message: Reboot from Cloud Init
+ timeout: 5
+
+output: {all: '| tee -a /var/log/cloud-init-output.log'}

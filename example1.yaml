@@ -1,0 +1,34 @@
+#cloud-config
+apt_mirror: http://mirror.rackspace.com/ubuntu/
+apt_mirror_search_dns: false
+
+# Install Packages
+packages:
+  - build-essential
+  - screen
+  - less
+  - tcpdump
+  - sudo
+  - vim  
+
+# Add Users
+users:
+  - name: calvin
+    gecos: calvin
+    shell: /bin/bash
+    passwd: $6$NZBuIwQ1$tNohIOXflhTsAeevjNVzaLf1piRuTIBRehj4sBpdYyo4RFV3ZFdJ4tuENkEmh2iknHic/.iXc1mhYxCiTJ5G1.
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-import-id: None
+    ssh-authorized-keys:
+       - ssh-rsa BAAAB3NzaC1yc2EAAAABIwAAAQEA8qZ1W3X+VFSoK8741Pew4B8v7MOhJE9nDAAdMMtzs1xeAmlqs09kqjyIAvRsoeKL/qrLQE2nE/JRpkCOXf99MhdQIeJwXFj3lb1SdIsP7cDuLbtl95EygSjSf5ip+pswJl9BeKRvOPpu5ksX1okoSvXGj2LaTLsFZ1hkzf0S7OHycHRHgpb5v5flzVvCCyW9Vh5WjZHOh8QnNoNWhlA9ljLt/nOIveALxHbHitbX7zirVC0DQqVhwC1d1pHeIbFpLgLoDQV8vghRWyPjPnfS8AyFTs2CEzAnm6UtCEO/Vw1s/UTm9/qHUNS5cRvCn783rvFPQ6motglazv9igvF7cQ== sri@devnull
+
+# Run a Command at Boot
+bootcmd:
+  - echo 8.8.8.8 google_dns >> /etc/hosts
+
+# Run other commands
+runcmd:
+  - cp /etc/vim/vimrc /root/.vimrc
+
+# Log more than usual
+output: {all: '| tee -a /var/log/cloud-init-output.log'}
