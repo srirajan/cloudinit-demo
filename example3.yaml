@@ -1,6 +1,10 @@
 #cloud-config
 # Some other examples
 
+# apt stuff
+apt_mirror: http://mirror.rackspace.com/ubuntu/
+apt_mirror_search_dns: false
+
 
 # Call an external URL
 phone_home:
