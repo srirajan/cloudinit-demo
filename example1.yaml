@@ -1,6 +1,4 @@
 #cloud-config
-apt_mirror: http://mirror.rackspace.com/ubuntu/
-apt_mirror_search_dns: false
 
 # Install Packages
 packages:
