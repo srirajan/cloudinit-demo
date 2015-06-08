@@ -8,6 +8,8 @@ Usage
 
  * Use your Rackspace Cloud account or get a [developer one for free](https://developer.rackspace.com/signup/)
 
+ * Ensure you have novaclient installed. Refer to http://www.rackspace.com/knowledge_center/article/installing-python-novaclient-on-linux-and-mac-os for more details.
+
  * Clone this repo to your local folder
  ```
  git clone https://github.com/srirajan/cloudinit-demo
@@ -112,5 +114,5 @@ Usage
  * Other Examples; See [example 3](https://github.com/srirajan/cloudinit-demo/blob/master/example3.yaml) & [example 4](https://github.com/srirajan/cloudinit-demo/blob/master/example4.yaml)
 
  * Read the (docs)[https://cloudinit.readthedocs.org/en/latest/]
- 
+
 
