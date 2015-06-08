@@ -6,7 +6,15 @@ About
 Usage
 ====
 
- * Run example 1 on Rackspace Cloud, CentOS 6 (PVHVM).
+ * Use your Rackspace Cloud account or get a [developer one for free](https://developer.rackspace.com/signup/)
+
+ * Clone this repo to your local folder
+ ```
+ git clone https://github.com/srirajan/cloudinit-demo
+ cd cloudinit-demo
+ ```
+
+ * Run example 1 on Rackspace Cloud, CentOS 6 (PVHVM). Replace 'key' with your own key name. If you don't have a key 
 
 ```
 key=sri-key
@@ -90,7 +98,7 @@ c0001
 	```
 
 
- * Run example 2 & see /home/demo/.chef/knife.rb was created
+ * Run example 2 & see if /home/demo/.chef/knife.rb was created
 ```
 key=sri-key
 nova boot --flavor=general1-1 \
@@ -102,4 +110,7 @@ c0003
 ```
 
  * Other Examples; See [example 3](https://github.com/srirajan/cloudinit-demo/blob/master/example3.yaml) & [example 4](https://github.com/srirajan/cloudinit-demo/blob/master/example4.yaml)
+
+ * Read the (docs)[https://cloudinit.readthedocs.org/en/latest/]
+ 
 
