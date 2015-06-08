@@ -42,9 +42,29 @@ c0001
 	Disk identifier: 0x00000000
 	```
 
-	* The yaml file we sent will show up under here.
+	* Mount the drive meta_data.json
 	```
+	mkdir -p /mnt/configdrive
+	mount /dev/xvdd  /mnt/configdrive
+	```
+
+	* Look at the meta data files
+	```
+	cat /mnt/configdrive/openstack/latest/meta_data.json | python -m json.tool
+
+	cat /mnt/configdrive/openstack/latest/vendor_data.json | python -m json.tool
+
+	```
+
+	* The yaml file we sent will show up under both these locations.
+	```
+	less  /mnt/configdrive/openstack/latest/user_data
 	less /var/lib/cloud/instance/cloud-config.txt 
+	```
+
+	* Unmount - A good admin never leaves unwanted drives mounted :)
+	```
+	umount /mnt/configdrive
 	```
 
 	* Runcmd arguments from the Yaml file will also show under scripts.
@@ -70,7 +90,7 @@ c0001
 	```
 
 
- * Run example 2
+ * Run example 2 & see /home/demo/.chef/knife.rb was created
 ```
 key=sri-key
 nova boot --flavor=general1-1 \
